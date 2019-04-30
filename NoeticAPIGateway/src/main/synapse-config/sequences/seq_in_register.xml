@@ -20,32 +20,32 @@
     </log>
     <payloadFactory media-type="json">
         <format>
-{
-    "password": "$1",
-    "newPassword": "$1",
-    "typeId": $2,
-    "version": $3,
-    "identityApiDTO": {
-        "userName": "$4",
-        "firstName": "$5",
-        "lastName": "$6",
-        "emailPrimary": "$4",
-        "addresses": [
-            {
-                "firstLineOfAddress": "$7",
-                "secondLineOfAddress": "$8",
-                "city": "$9",
-                "postCode": "$10",
-                "countryCode": "$11",
-                "stateCode": "",
-                "typeId": $2
-            }
-        ],
-        "systemId": $12,
-        "emailVerifiedExpiry": 2522966400000
-    },
-    "remarks": ""
-}
+		{
+		    "password": "$1",
+		    "newPassword": "$1",
+		    "typeId": $2,
+		    "version": $3,
+		    "identityApiDTO": {
+		        "userName": "$4",
+		        "firstName": "$5",
+		        "lastName": "$6",
+		        "emailPrimary": "$4",
+		        "addresses": [
+		            {
+		                "firstLineOfAddress": "$7",
+		                "secondLineOfAddress": "$8",
+		                "city": "$9",
+		                "postCode": "$10",
+		                "countryCode": "$11",
+		                "stateCode": "",
+		                "typeId": $2
+		            }
+		        ],
+		        "systemId": $12,
+		        "emailVerifiedExpiry": 2522966400000
+		    },
+		    "remarks": ""
+		}
         </format>
         <args>
             <arg evaluator="xml" expression="get-property('password')"/>

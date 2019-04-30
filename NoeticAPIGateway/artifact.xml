@@ -26,4 +26,19 @@
     <artifact name="UserRegisterEP" groupId="com.example.NoeticAPIGateway.endpoint" version="1.0.0" type="synapse/endpoint" serverRole="EnterpriseServiceBus">
         <file>src/main/synapse-config/endpoints/UserRegisterEP.xml</file>
     </artifact>
+    <artifact name="seq_in_availability" groupId="com.example.NoeticAPIGateway.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/seq_in_availability.xml</file>
+    </artifact>
+    <artifact name="seq_in_login" groupId="com.example.NoeticAPIGateway.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/seq_in_login.xml</file>
+    </artifact>
+    <artifact name="seq_out_login" groupId="com.example.NoeticAPIGateway.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/seq_out_login.xml</file>
+    </artifact>
+    <artifact name="seq_in_register" groupId="com.example.NoeticAPIGateway.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/seq_in_register.xml</file>
+    </artifact>
+    <artifact name="seq_out_register" groupId="com.example.NoeticAPIGateway.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/seq_out_register.xml</file>
+    </artifact>
 </artifacts>

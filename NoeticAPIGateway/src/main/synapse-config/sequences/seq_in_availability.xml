@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <sequence name="seq_in_availability" trace="disable" xmlns="http://ws.apache.org/ns/synapse">
+    <sequence key="seq_common"/>
     <log description="Welcome Msg"/>
     <log description="Full IN Log"/>
-    <property description="param_checkin" expression="$url:checkIn" name="uri.var.checkIn" scope="default" type="STRING"/>
-    <property description="param_checkout" expression="$url:checkOut" name="uri.var.checkOut" scope="default" type="STRING"/>
+    <property description="param_checkin" expression="$url:checkIn" name="uri.var.checkin" scope="default" type="STRING"/>
+    <property description="param_checkout" expression="$url:checkOut" name="uri.var.checkout" scope="default" type="STRING"/>
     <log level="custom">
-        <property expression="get-property('uri.var.checkIn')" name="checkIn"/>
-        <property expression="get-property('uri.var.checkOut')" name="checkOut"/>
+        <property expression="get-property('uri.var.checkin')" name="checkIn"/>
+        <property expression="get-property('uri.var.checkout')" name="checkOut"/>
     </log>
-    <property name="POST_TO_URI" scope="axis2" type="STRING" value="true"/>
     <sequence key="seq_imperial_auth"/>
     <send>
-        <endpoint key="AvailabilityEP"/>
+        <endpoint>
+            <http method="get" uri-template="{uri.var.apihost}/room-availability/?checkIn={uri.var.checkin}&amp;checkOut={uri.var.checkout}"/>
+        </endpoint>
     </send>
 </sequence>

@@ -5,4 +5,19 @@
     <property name="Accept" scope="transport" type="STRING" value="application/json"/>
     <property action="remove" name="Content-Encoding" scope="transport"/>
     <property action="remove" name="Accept-Encoding" scope="transport"/>
+    <property name="deployProfile" scope="default" type="STRING" value="DEV"/>
+    <switch source="get-property('deployProfile')">
+        <case regex="LOCAL">
+            <property name="uri.var.apihost" scope="default" type="STRING" value="https://local.imperialhotels.co.uk/v1"/>
+        </case>
+        <case regex="DEV">
+            <property name="uri.var.apihost" scope="default" type="STRING" value="https://dev-api.imperialhotels.co.uk/v1"/>
+        </case>
+        <default>
+            <property name="uri.var.apihost" scope="default" type="STRING" value="https://dev-api.imperialhotels.co.uk/v1"/>
+        </default>
+    </switch>
+    <log level="custom">
+        <property expression="get-property('uri.var.apihost')" name="uri.var.apihost"/>
+    </log>
 </sequence>
