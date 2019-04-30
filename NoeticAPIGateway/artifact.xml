@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?><artifacts>
+    <artifact name="NoeticAPI" groupId="com.example.NoeticAPIGateway.api" version="1.0.0" type="synapse/api" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/api/NoeticAPI.xml</file>
+    </artifact>
+    <artifact name="seq_common" groupId="com.example.NoeticAPIGateway.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/seq_common.xml</file>
+    </artifact>
+    <artifact name="seq_fault_type_1" groupId="com.example.NoeticAPIGateway.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/seq_fault_type_1.xml</file>
+    </artifact>
+    <artifact name="seq_imperial_auth" groupId="com.example.NoeticAPIGateway.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/seq_imperial_auth.xml</file>
+    </artifact>
+    <artifact name="seq_profile_api_auth" groupId="com.example.NoeticAPIGateway.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/seq_profile_api_auth.xml</file>
+    </artifact>
+    <artifact name="AvailabilityEP" groupId="com.example.NoeticAPIGateway.endpoint" version="1.0.0" type="synapse/endpoint" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/endpoints/AvailabilityEP.xml</file>
+    </artifact>
+    <artifact name="LoginEP" groupId="com.example.NoeticAPIGateway.endpoint" version="1.0.0" type="synapse/endpoint" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/endpoints/LoginEP.xml</file>
+    </artifact>
+    <artifact name="ProfileUpsertEP" groupId="com.example.NoeticAPIGateway.endpoint" version="1.0.0" type="synapse/endpoint" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/endpoints/ProfileUpsertEP.xml</file>
+    </artifact>
+    <artifact name="UserRegisterEP" groupId="com.example.NoeticAPIGateway.endpoint" version="1.0.0" type="synapse/endpoint" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/endpoints/UserRegisterEP.xml</file>
+    </artifact>
+</artifacts>
