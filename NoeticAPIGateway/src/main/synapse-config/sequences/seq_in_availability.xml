@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="seq_in_availability" trace="disable" xmlns="http://ws.apache.org/ns/synapse">
+    <log description="Welcome Msg"/>
+    <log description="Full IN Log"/>
+    <property description="param_checkin" expression="$url:checkIn" name="uri.var.checkIn" scope="default" type="STRING"/>
+    <property description="param_checkout" expression="$url:checkOut" name="uri.var.checkOut" scope="default" type="STRING"/>
+    <log level="custom">
+        <property expression="get-property('uri.var.checkIn')" name="checkIn"/>
+        <property expression="get-property('uri.var.checkOut')" name="checkOut"/>
+    </log>
+    <property name="POST_TO_URI" scope="axis2" type="STRING" value="true"/>
+    <sequence key="seq_imperial_auth"/>
+    <send>
+        <endpoint key="AvailabilityEP"/>
+    </send>
+</sequence>

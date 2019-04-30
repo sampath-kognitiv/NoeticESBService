@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="seq_out_login" trace="disable" xmlns="http://ws.apache.org/ns/synapse">
+    <property expression="json-eval($.)" name="Res-payload" scope="default" type="STRING"/>
+    <log level="custom">
+        <property expression="get-property('Res-payload')" name="Response"/>
+    </log>
+    <payloadFactory media-type="json">
+        <format>{
+	            "source": "ESB",
+			    "person": {
+			        "firstName": "$1",
+			        "lastName": "$2",
+			        "isAppUser": $3
+			    },
+			    "id": "$4",
+			    "token": "$5"
+			}
+			</format>
+        <args>
+            <arg evaluator="json" expression="$.person.firstName"/>
+            <arg evaluator="json" expression="$.person.lastName"/>
+            <arg evaluator="json" expression="$.person.isAppUser"/>
+            <arg evaluator="json" expression="$.id"/>
+            <arg evaluator="json" expression="$.token"/>
+        </args>
+    </payloadFactory>
+    <send/>
+</sequence>

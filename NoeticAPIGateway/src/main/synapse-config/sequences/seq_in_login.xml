@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="seq_in_login" trace="disable" xmlns="http://ws.apache.org/ns/synapse">
+    <property expression="json-eval($.)" name="Req-payload" scope="default" type="STRING"/>
+    <property expression="$body" name="payload" scope="default" type="STRING"/>
+    <log level="custom">
+        <property expression="get-property('Req-payload')" name="Request"/>
+    </log>
+    <sequence key="seq_imperial_auth"/>
+    <send>
+        <endpoint key="LoginEP"/>
+    </send>
+</sequence>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="seq_out_register" trace="disable" xmlns="http://ws.apache.org/ns/synapse">
+    <property expression="json-eval($.)" name="Res-payload" scope="default" type="STRING"/>
+    <log level="custom">
+        <property expression="get-property('Res-payload')" name="Profile Response"/>
+    </log>
+    <send/>
+</sequence>
