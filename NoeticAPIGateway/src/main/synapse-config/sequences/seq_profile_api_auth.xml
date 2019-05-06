@@ -1,4 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <sequence name="seq_profile_api_auth" trace="disable" xmlns="http://ws.apache.org/ns/synapse">
-    <property expression="fn:concat('Basic ', base64Encode('api@noetic:bG9jYWxfaWRlbnRpdHlfYXBpX2V4dGVybmFs'))" name="Authorization" scope="transport" type="STRING" xmlns:ns="http://org.apache.synapse/xsd"/>
+    <switch source="get-property('deployProfile')">
+        <case regex="LOCAL">
+            <property name="uri.var.profileApiHost" scope="default" type="STRING" value="https://dev.wearenoetic.com:8443/profile-api/v1/profiles?systemKey=EF5ABD24-0AD7-11E6-93FF-9D9577E92AEE-IMP01&amp;catalogueKey=IDENTITY_API_N03t1c"/>
+            <property expression="fn:concat('Basic ', base64Encode('api@noetic:bG9jYWxfaWRlbnRpdHlfYXBpX2V4dGVybmFs'))" name="Authorization" scope="transport" type="STRING" xmlns:ns="http://org.apache.synapse/xsd"/>
+        </case>
+        <case regex="DEV">
+            <property name="uri.var.profileApiHost" scope="default" type="STRING" value="https://dev.wearenoetic.com:8443/profile-api/v1/profiles?systemKey=EF5ABD24-0AD7-11E6-93FF-9D9577E92AEE-IMP01&amp;catalogueKey=IDENTITY_API_N03t1c"/>
+            <property expression="fn:concat('Basic ', base64Encode('api@noetic:bG9jYWxfaWRlbnRpdHlfYXBpX2V4dGVybmFs'))" name="Authorization" scope="transport" type="STRING" xmlns:ns="http://org.apache.synapse/xsd"/>
+        </case>
+        <default/>
+    </switch>
 </sequence>

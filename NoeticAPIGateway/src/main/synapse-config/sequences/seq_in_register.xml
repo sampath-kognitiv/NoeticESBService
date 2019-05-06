@@ -12,7 +12,9 @@
     </log>
     <sequence key="seq_imperial_auth"/>
     <call>
-        <endpoint key="UserRegisterEP"/>
+        <endpoint>
+            <http method="get" uri-template="{uri.var.hsApiHost}/account"/>
+        </endpoint>
     </call>
     <property expression="json-eval($.)" name="hsapi-res-payload" scope="default" type="STRING"/>
     <log level="custom">
@@ -68,6 +70,8 @@
     </log>
     <sequence key="seq_profile_api_auth"/>
     <send>
-        <endpoint key="ProfileUpsertEP"/>
+        <endpoint>
+            <http method="post" uri-template="{uri.var.profileApiHost}"/>
+        </endpoint>
     </send>
 </sequence>

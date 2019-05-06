@@ -1,4 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <sequence name="seq_imperial_auth" trace="disable" xmlns="http://ws.apache.org/ns/synapse">
-    <property expression="fn:concat('Basic ', base64Encode('imperial:TKyENSuMpb63spwIPAUvTvgC8UXLNwkW'))" name="Authorization" scope="transport" type="STRING" xmlns:ns="http://org.apache.synapse/xsd"/>
+    <switch source="get-property('deployProfile')">
+        <case regex="LOCAL">
+            <property name="uri.var.hsApiHost" scope="default" type="STRING" value="https://local.imperialhotels.co.uk"/>
+            <property expression="fn:concat('Basic ', base64Encode('imperial:TKyENSuMpb63spwIPAUvTvgC8UXLNwkW'))" name="Authorization" scope="transport" type="STRING" xmlns:ns="http://org.apache.synapse/xsd"/>
+        </case>
+        <case regex="DEV">
+            <property name="uri.var.hsApiHost" scope="default" type="STRING" value="https://dev-api.imperialhotels.co.uk"/>
+            <property expression="fn:concat('Basic ', base64Encode('imperial:TKyENSuMpb63spwIPAUvTvgC8UXLNwkW'))" name="Authorization" scope="transport" type="STRING" xmlns:ns="http://org.apache.synapse/xsd"/>
+        </case>
+        <default/>
+    </switch>
+    <log level="custom">
+        <property expression="get-property('uri.var.hsApiHost')" name="uri.var.hsApiHost"/>
+    </log>
 </sequence>

@@ -3,8 +3,8 @@
     <sequence key="seq_common"/>
     <log description="Welcome Msg"/>
     <log description="Full IN Log"/>
-    <property description="param_checkin" expression="$url:checkIn" name="uri.var.checkin" scope="default" type="STRING"/>
-    <property description="param_checkout" expression="$url:checkOut" name="uri.var.checkout" scope="default" type="STRING"/>
+    <property description="param_checkin" expression="$url:checkIn" name="uri.var.checkIn" scope="default" type="STRING"/>
+    <property description="param_checkout" expression="$url:checkOut" name="uri.var.checkut" scope="default" type="STRING"/>
     <log level="custom">
         <property expression="get-property('uri.var.checkin')" name="checkIn"/>
         <property expression="get-property('uri.var.checkout')" name="checkOut"/>
@@ -12,7 +12,7 @@
     <sequence key="seq_imperial_auth"/>
     <send>
         <endpoint>
-            <http method="get" uri-template="{uri.var.apihost}/room-availability/?checkIn={uri.var.checkin}&amp;checkOut={uri.var.checkout}"/>
+            <http method="get" uri-template="{uri.var.hsApiHost}/v1/room-availability/?checkIn={uri.var.checkIn}&amp;checkOut={uri.var.checkOut}"/>
         </endpoint>
     </send>
 </sequence>
