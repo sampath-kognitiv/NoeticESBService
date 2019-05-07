@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="seq_out_hotel_availability" trace="disable" xmlns="http://ws.apache.org/ns/synapse">
+    <log description="Full OUT Log" level="full"/>
+    <property expression="json-eval($.)" name="Res-payload" scope="default" type="STRING"/>
+    <property expression="json-eval($.urn)" name="urn" scope="default" type="STRING"/>
+    <log level="custom">
+        <property expression="get-property('Res-payload')" name="Response"/>
+    </log>
+    <payloadFactory media-type="json">
+        <format>
+        	{
+	            "source": "EI",
+	            "urn": "$1",
+			    "url": "$2",
+			    "updated": $3,
+			    "complete": $4,
+			    "checkIn": $5,
+			    "checkOut": $6,
+			    "nights": $7,
+			    "gtmCookieId": "$8",
+			    "rooms": $9,
+			    "processedTime": $10,
+			    "currencyTransactionUrn": "$11",
+			    "bcISO": "$12",
+			    "fcISO": "$13",
+			    "fcExchangeRate": "$14",
+			    "generatedFromBookingAPI": $15
+			}
+		</format>
+        <args>
+            <arg evaluator="json" expression="$.urn"/>
+            <arg evaluator="xml" expression="fn:concat('/api-gateway/v1/room-availability/',get-property('urn'))"/>
+            <arg evaluator="json" expression="$.updated"/>
+            <arg evaluator="json" expression="$.complete"/>
+            <arg evaluator="json" expression="$.checkIn"/>
+            <arg evaluator="json" expression="$.checkOut"/>
+            <arg evaluator="json" expression="$.nights"/>
+            <arg evaluator="json" expression="$.gtmCookieId"/>
+            <arg evaluator="json" expression="$.rooms"/>
+            <arg evaluator="json" expression="$.processedTime"/>
+            <arg evaluator="json" expression="$.currencyTransactionUrn"/>
+            <arg evaluator="json" expression="$.bcISO"/>
+            <arg evaluator="json" expression="$.fcISO"/>
+            <arg evaluator="json" expression="$.fcExchangeRate"/>
+            <arg evaluator="json" expression="$.generatedFromBookingAPI"/>
+        </args>
+    </payloadFactory>
+    <send/>
+</sequence>

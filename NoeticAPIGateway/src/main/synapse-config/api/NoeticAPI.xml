@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <api context="/api-gateway" name="NoeticAPI" xmlns="http://ws.apache.org/ns/synapse">
-    <resource faultSequence="seq_fault_type_1" inSequence="seq_in_availability" methods="GET" uri-template="/v1/availability">
-        <outSequence>
-            <log description="Full OUT Log" level="full"/>
-            <send/>
-        </outSequence>
-    </resource>
+    <resource faultSequence="seq_fault_type_1" inSequence="seq_in_hotel_availability" methods="GET" outSequence="seq_out_hotel_availability" uri-template="/v1/hotel-availability"/>
+    <resource faultSequence="seq_fault_type_1" inSequence="seq_in_room_availability" methods="GET" outSequence="seq_out_hotel_availability" uri-template="/v1/room-availability/{value1}"/>
     <resource faultSequence="seq_fault_type_1" inSequence="seq_in_login" methods="POST" outSequence="seq_out_login" uri-template="/v1/login"/>
     <resource faultSequence="seq_fault_type_1" inSequence="seq_in_register" methods="POST" outSequence="seq_out_register" uri-template="/v1/register"/>
 </api>

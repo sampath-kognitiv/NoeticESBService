@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="seq_in_room_availability" trace="disable" xmlns="http://ws.apache.org/ns/synapse">
+    <sequence key="seq_common"/>
+    <log description="Welcome Msg"/>
+    <log description="Full IN Log"/>
+    <property description="param_urn" expression="get-property('uri.var.value1')" name="uri.var.value1" scope="default" type="STRING"/>
+    <log level="custom">
+        <property expression="get-property('uri.var.value1')" name="value1"/>
+    </log>
+    <sequence key="seq_imperial_auth"/>
+    <send>
+        <endpoint>
+            <http method="get" uri-template="{uri.var.hsApiHost}/v1/room-availability/{uri.var.value1}"/>
+        </endpoint>
+    </send>
+</sequence>

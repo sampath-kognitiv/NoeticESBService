@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="seq_in_hotel_availability" trace="disable" xmlns="http://ws.apache.org/ns/synapse">
+    <sequence key="seq_common"/>
+    <log description="Welcome Msg"/>
+    <log description="Full IN Log"/>
+    <property description="param_checkin" expression="$url:checkIn" name="uri.var.checkIn" scope="default" type="STRING"/>
+    <property description="param_checkout" expression="$url:checkOut" name="uri.var.checkOut" scope="default" type="STRING"/>
+    <property description="param_hotels" expression="$url:hotels" name="uri.var.hotels" scope="default" type="STRING"/>
+    <property description="param_roomTypes" expression="$url:roomTypes" name="uri.var.roomTypes" scope="default" type="STRING"/>
+    <property description="param_client" expression="$url:client" name="uri.var.client" scope="default" type="STRING"/>
+    <property description="param_bcCurrency" expression="$url:bcCurrency" name="uri.var.bcCurrency" scope="default" type="STRING"/>
+    <property description="param_fcCurrency" expression="$url:fcCurrency" name="uri.var.fcCurrency" scope="default" type="STRING"/>
+    <log level="custom">
+        <property expression="get-property('uri.var.checkIn')" name="checkIn"/>
+        <property expression="get-property('uri.var.checkOut')" name="checkOut"/>
+    </log>
+    <sequence key="seq_imperial_auth"/>
+    <send>
+        <endpoint>
+            <http method="get" uri-template="{uri.var.hsApiHost}/v1/room-availability/?checkIn={uri.var.checkIn}&amp;checkOut={uri.var.checkOut}&amp;client={uri.var.client}&amp;bcCurrency={uri.var.bcCurrency}&amp;fcCurrency={uri.var.fcCurrency}&amp;hotels={uri.var.hotels}&amp;roomTypes={uri.var.roomTypes}"/>
+        </endpoint>
+    </send>
+</sequence>
